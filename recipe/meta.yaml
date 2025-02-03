@@ -11,13 +11,13 @@ source:
 
 build:
   number: 0
-  skip: true  # [not win64]
+  skip: true  # [not win]
   run_exports:
     - {{ pin_subpackage(name, exact=True) }}
 
 requirements:
   build:
-    - vs2017_win-64          # [win64]
+    - vs2017_win-64          # [win]
     - cmake
     - ninja
   host:
