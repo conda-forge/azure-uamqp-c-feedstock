@@ -1,14 +1,14 @@
 {% set name = "azure-uamqp-c" %}
-{% set version = "2019.12.09" %}
+{% set version = "2020-12-09" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  - url: https://github.com/Azure/azure-uamqp-c/archive/LTS_02_2020_Ref01.tar.gz
+  - url: https://github.com/Azure/azure-uamqp-c/archive/LTS_02_2020_Ref01.zip
     fn: {{ name }}-{{ version }}.tar.gz
-    sha256: 8920d1ff729d6cc9c03b6b6d5d57490d8ab06aeca16279a6f3f940287601c9b3
+    sha256: c447bdc02881e387f5ee674abbfe980004e894566cffe74feecf5f31a61a0f46
 
 build:
   number: 0
