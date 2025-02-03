@@ -17,7 +17,8 @@ build:
 
 requirements:
   build:
-    - vs2017_win-64          # [win]
+    - {{ compiler("c") }}
+    - {{ stdlib("c") }}
     - cmake
     - ninja
   host:
