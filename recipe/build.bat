@@ -1,11 +1,6 @@
-:: An undefined %VAR% expands to itself in cmd, not to nothing, so make
-:: sure CMAKE_ARGS is defined before it reaches the command line.
-if not defined CMAKE_ARGS set "CMAKE_ARGS="
-
 cmake -G "Ninja" ^
     -S . ^
     -B build ^
-    %CMAKE_ARGS% ^
     -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%" ^
     -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" ^
     -DCMAKE_BUILD_TYPE=Release ^
