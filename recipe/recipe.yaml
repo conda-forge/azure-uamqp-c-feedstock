@@ -1,19 +1,26 @@
 schema_version: 1
 
+# The Git tags originally used the format YYYY-MM-DD, which we adopted for this
+# recipe. More recent tags are no longer consistent (eg LTS_07_2022_Ref02). To
+# ensure that the latest version is always installed, we create the version
+# string as a rearrangement of the tag name: LTS_MM_YYYY_RefRR --> YYYY.MM.refRR
+#
+# Releases: https://github.com/Azure/azure-uamqp-c/tags
 context:
   name: azure-uamqp-c
-  version: "2019.12.09"
+  version: "2022.07.ref02"
+  tag: LTS_07_2022_Ref02
 
 package:
   name: ${{ name }}
   version: ${{ version }}
 
 source:
-  - url: https://github.com/Azure/azure-uamqp-c/archive/LTS_02_2020_Ref01.tar.gz
-    sha256: 8920d1ff729d6cc9c03b6b6d5d57490d8ab06aeca16279a6f3f940287601c9b3
+  - url: https://github.com/Azure/azure-uamqp-c/archive/${{ tag }}.tar.gz
+    sha256: f086b1b0bbfd098749ce960d2e04f481dd6e51e580236a3f8a8238eed0bbd294
 
 build:
-  number: 1
+  number: 0
   skip: not win64
 
 requirements:
