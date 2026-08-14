@@ -19,30 +19,28 @@ build:
 
 requirements:
   build:
-    - if: win64
-      then: vs2017_win-64
+    - ${{ compiler('c') }}
+    - ${{ stdlib('c') }}
+    - ${{ compiler('cxx') }}
     - cmake
     - ninja
   host:
     - azure-c-shared-utility
-  run:
-    - azure-c-shared-utility
   run_exports:
-    - ${{ pin_subpackage(name, exact=True) }}
+    - ${{ pin_subpackage(name, upper_bound='x.x.x') }}
 
 tests:
-  - script:
-      - if: win
-        then: if not exist %PREFIX%\\Library\\bin\\uamqp.dll exit 1
+  - package_contents:
+      files:
+        - Library/bin/uamqp.dll
+        - Library/lib/uamqp.lib
 
 about:
   license: MIT
   license_file: LICENSE
-  summary: |
-    uAMQP is a general purpose C library for AMQP 1.0.
-
-
+  summary: uAMQP is a general purpose C library for AMQP 1.0.
   homepage: https://github.com/Azure/azure-uamqp-c
+  repository: https://github.com/Azure/azure-uamqp-c
 
 extra:
   recipe-maintainers:
