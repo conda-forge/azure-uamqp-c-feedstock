@@ -1,13 +1,15 @@
 About azure-uamqp-c-feedstock
 =============================
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/azure-uamqp-c-feedstock/blob/main/LICENSE.txt)
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/convert_feedstock_to_v1_recipe_format-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/Azure/azure-uamqp-c
 
 Package license: MIT
 
 Summary: uAMQP is a general purpose C library for AMQP 1.0.
+
+Development: https://github.com/Azure/azure-uamqp-c
 
 Current build status
 ====================
@@ -16,8 +18,8 @@ Current build status
 <table><tr>
     <td>GitHub Actions</td>
     <td>
-      <a href="https://github.com/conda-forge/azure-uamqp-c-feedstock/actions/workflows/conda-build.yml">
-        <img src="https://github.com/conda-forge/azure-uamqp-c-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=main">
+      <a href="https://github.com/conda-forge/convert_feedstock_to_v1_recipe_format-feedstock/actions/workflows/conda-build.yml">
+        <img src="https://github.com/conda-forge/convert_feedstock_to_v1_recipe_format-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=main">
       </a>
     </td>
   </tr>
