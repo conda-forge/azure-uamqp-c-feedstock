@@ -1,21 +1,20 @@
 schema_version: 1
 
+# tag: LTS_MM_YYYY_RefRR --> version: YYYY.MM.refRR
 # The Git tags originally used the format YYYY-MM-DD, which we adopted for this
-# recipe. More recent tags are no longer consistent (eg LTS_07_2022_Ref02), so
-# we rearrange the tag into the version string:
+# recipe. More recent tags are no longer consistent (eg LTS_07_2022_Ref02). To
+# ensure that the latest version is always installed, we created the version
+# string as a rearrangement of the tag name: LTS_MM_YYYY_RefRR --> YYYY.MM.refRR
 #
-#     LTS_MM_YYYY_RefRR --> YYYY.MM.postRR
-#
-# `post` is not meant literally here: RefRR is a distinct upstream revision
-# rather than a repackage of identical source. It is used because conda and
-# rattler both order a `post` suffix above the bare version, which keeps the
-# refreshes of an LTS line ascending. A `refRR` suffix would instead be read
-# as a string component and sort *below* the bare version.
+# This matches the scheme azure-c-shared-utility uses, so the two stay
+# consistent. Note that `refRR` parses as a string component and therefore
+# sorts below the bare version (2022.07.ref02 < 2022.07); harmless here, as
+# every upstream tag carries a RefRR and a plain YYYY.MM is never published.
 #
 # Releases: https://github.com/Azure/azure-uamqp-c/tags
 context:
   name: azure-uamqp-c
-  version: "2022.07.post2"
+  version: "2022.07.ref02"
   tag: LTS_07_2022_Ref02
 
 package:
