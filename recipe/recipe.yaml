@@ -1,0 +1,60 @@
+schema_version: 1
+
+# tag: LTS_MM_YYYY_RefRR --> version: YYYY.MM.refRR
+# The Git tags originally used the format YYYY-MM-DD, which we adopted for this
+# recipe. More recent tags are no longer consistent (eg LTS_07_2022_Ref02). To
+# ensure that the latest version is always installed, we created the version
+# string as a rearrangement of the tag name: LTS_MM_YYYY_RefRR --> YYYY.MM.refRR
+#
+# This matches the scheme azure-c-shared-utility uses, so the two stay
+# consistent. Note that `refRR` parses as a string component and therefore
+# sorts below the bare version (2022.07.ref02 < 2022.07); harmless here, as
+# every upstream tag carries a RefRR and a plain YYYY.MM is never published.
+#
+# Releases: https://github.com/Azure/azure-uamqp-c/tags
+context:
+  name: azure-uamqp-c
+  version: "2022.07.ref02"
+  tag: LTS_07_2022_Ref02
+
+package:
+  name: ${{ name }}
+  version: ${{ version }}
+
+source:
+  - url: https://github.com/Azure/azure-uamqp-c/archive/${{ tag }}.tar.gz
+    sha256: f086b1b0bbfd098749ce960d2e04f481dd6e51e580236a3f8a8238eed0bbd294
+
+build:
+  number: 0
+  skip: not win64
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ stdlib('c') }}
+    - ${{ compiler('cxx') }}
+    - cmake
+    - ninja
+  host:
+    - azure-c-shared-utility
+  run_exports:
+    - ${{ pin_subpackage(name, upper_bound='x.x.x') }}
+
+tests:
+  - package_contents:
+      files:
+        - Library/bin/uamqp.dll
+        - Library/lib/uamqp.lib
+
+about:
+  license: MIT
+  license_file: LICENSE
+  summary: uAMQP is a general purpose C library for AMQP 1.0.
+  homepage: https://github.com/Azure/azure-uamqp-c
+  repository: https://github.com/Azure/azure-uamqp-c
+
+extra:
+  recipe-maintainers:
+    - xylar
+    - seanyen
